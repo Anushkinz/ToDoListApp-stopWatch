@@ -31,15 +31,14 @@ struct NoItemsView: View {
                             .background(animate ? Color.red : Color.accentColor)
                             .cornerRadius(10)
                     })
-                    .padding(.horizontal, animate ? 30 : 50)
-                    .shadow(
-                        color: animate ? Color.red.opacity(0.7) :
-                            Color.accentColor.opacity(0.7),
-                        radius: animate ? 30 : 50,
-                        x: 0,
-                        y: animate ? 50 : 30)
-                    .scaleEffect(animate ? 1.1 : 1.0)
-                    .offset(y: animate ? -7 : 0)
+//                    .padding(.horizontal, animate ? 30 : 50)
+//                    .shadow(
+//                        color: animate ? Color.red.opacity(0.7) : Color.accentColor.opacity(0.7),
+//                        radius: animate ? 30 : 50,
+//                        x: 0,
+//                        y: animate ? 50 : 30)
+//                    .scaleEffect(animate ? 1.1 : 1.0)
+//                    .offset(y: animate ? -7 : 0)
             }
             .multilineTextAlignment(.center)
             .padding(40)

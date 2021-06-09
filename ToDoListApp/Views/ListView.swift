@@ -21,6 +21,7 @@ struct searchView: View {
         .background(Color.primary.opacity(0.05))
         .cornerRadius(8)
         .padding(.horizontal)
+        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: 200, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealHeight: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
     }
 }
 
@@ -31,7 +32,7 @@ struct ListView: View {
     var body: some View {
         ZStack{
             if listViewModel.items.isEmpty{
-                Text("No items")
+                NoItemsView()
             }else{
                 List{
                     ForEach(listViewModel.items) { item in
@@ -51,7 +52,11 @@ struct ListView: View {
         }
         .navigationTitle("Todo list ✏️")
         .navigationBarItems(
-            leading: EditButton(),
+            leading:
+                HStack{
+                    EditButton()
+                    searchView()
+                },
             trailing:
                 NavigationLink("Add", destination: addView())
             )
@@ -102,7 +107,6 @@ struct ContentView: View {
                 .padding(.bottom, 50)
                 .padding(.trailing, 5)
                 .padding(.leading, 5)
-//            if stopWatchManager.mode == .stopped{
             if isShowingRed{
             HStack{
                 Picker(selection: $timerIndex , label: Text("Picker")) {
@@ -156,10 +160,6 @@ struct TimerButton: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-//        NavigationView{
-//
-//        }
-//        .environmentObject(ListViewModel())
         tabBarView()
     }
 }
